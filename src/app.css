@@ -1,0 +1,24 @@
+body {
+	font-family: Roboto, sans-serif;
+	padding: 0;
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden !important;
+}
+
+.player-content {
+	background-color: #ffffff7d;
+	backdrop-filter: blur(5px);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	.player-content {
+		background-color: #3333337d;
+	}
+}
+
+.mdc-layout-grid__inner > * {
+	display: flex;
+	align-items: center;
+}
