@@ -45,9 +45,6 @@
 				<Cell span={7} style="grid-column-end: span 3;">
 					<div class="mdc-typography--headline2">{currentlyPlaying.name}</div>
 				</Cell>
-				<Cell span={5} style="grid-column-end: span 1;justify-content: center;">
-					<IconButton size="normal" class="material-icons">{icon}</IconButton>
-				</Cell>
 			</LayoutGrid>
 			<audio src={currentlyPlaying.url_resolved} autoplay />
 		</Content>

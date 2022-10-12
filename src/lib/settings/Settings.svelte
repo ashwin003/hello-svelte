@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Dialog, { Header, Title, Content, Actions } from '@smui/dialog';
 	import Button, { Label } from '@smui/button';
-	import List, { Item, Graphic, Meta, Text, PrimaryText, SecondaryText } from '@smui/list';
+	import List, { Item, Graphic, Text, PrimaryText, SecondaryText } from '@smui/list';
 	import { createEventDispatcher, onMount } from 'svelte';
 	import type { Country } from './country';
 	import type { Geolocation } from './geolocation';
@@ -60,7 +60,6 @@
 						<PrimaryText style="font-weight: bold">{country.name}</PrimaryText>
 						<SecondaryText>{country.iso_3166_1}</SecondaryText>
 					</Text>
-					<Meta>{country.stationcount}</Meta>
 				</Item>
 			{/each}
 		</List>

@@ -3,7 +3,7 @@
 	import { country } from '$lib/stores/country';
 	import { onMount } from 'svelte';
 	import type { Station } from './station';
-	import List, { Item, Graphic, Text, PrimaryText, SecondaryText } from '@smui/list';
+	import List, { Item, Graphic, Text, PrimaryText, SecondaryText, Meta } from '@smui/list';
 	import Player from '$lib/player/Player.svelte';
 	import InfiniteLoading from 'svelte-infinite-loading';
 	import type { StateChanger } from 'svelte-infinite-loading';
@@ -20,7 +20,6 @@
 	$: selectedStation = data[selectedStationIndex];
 
 	function infiniteHandler(e: CustomEvent<StateChanger>) {
-		console.log('Here', e);
 		if (undefined === selectedCountry) {
 			e.detail.complete();
 		} else {
@@ -38,9 +37,11 @@
 		}
 	}
 
+	const allowedCodecs = ['MP3', 'AAC', 'OGG'];
+
 	const fetchData = async (countryCode: string, replaceData: boolean) => {
 		const offset = (page - 1) * pageSize;
-		const newData = await get<Station[]>(
+		let newData = await get<Station[]>(
 			'stations/search' +
 				'?countrycode=' +
 				countryCode +
@@ -51,6 +52,7 @@
 				'&hidebroken=true' +
 				'&order=clickcount'
 		);
+		newData = newData.filter(s => allowedCodecs.includes(s.codec));
 		hasMore = newData.length > 0;
 		if (hasMore) {
 			page = page + 1;
@@ -95,6 +97,7 @@
 					{radioStation.country}
 				</SecondaryText>
 			</Text>
+			<Meta>{radioStation.codec}</Meta>
 		</Item>
 	{/each}
 </List>
