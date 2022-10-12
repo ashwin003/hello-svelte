@@ -1,7 +1,5 @@
-import adapter from '@sveltejs/adapter-static';
+import adapter from '@sveltejs/adapter-auto';
 import preprocess from 'svelte-preprocess';
-
-const dev = "production" === "development";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -10,13 +8,7 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
-		adapter: adapter({
-            pages: "build",
-            assets: "build"
-        }),
-		paths: {
-			base: dev ? "" : "/hello-svelte",
-		},
+		adapter: adapter()
 	}
 };
 
