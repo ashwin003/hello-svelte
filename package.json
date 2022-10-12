@@ -26,7 +26,7 @@
 		"@smui/list": "^6.1.4",
 		"@smui/paper": "^6.1.4",
 		"@smui/top-app-bar": "^6.1.4",
-		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/adapter-static": "^1.0.0-next.44",
 		"@sveltejs/kit": "next",
 		"@typescript-eslint/eslint-plugin": "^5.40.0",
 		"@typescript-eslint/parser": "^5.40.0",
