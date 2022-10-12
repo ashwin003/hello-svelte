@@ -1,7 +1,7 @@
 var ghpages = require('gh-pages');
 
 ghpages.publish(
-    'public',
+    'build',
     {
         branch: 'gh-pages',
         silent: true,
@@ -9,7 +9,8 @@ ghpages.publish(
         user: {
             name: 'Ashwin Thyagarajan',
             email: 'ashwin031192@gmail.com'
-        }
+        },
+        dotfiles: true
     },
     () => {
         console.log('Deploy Complete!')
