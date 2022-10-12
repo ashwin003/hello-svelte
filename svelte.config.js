@@ -17,7 +17,6 @@ const config = {
 		paths: {
 			base: dev ? "" : "/hello-svelte",
 		},
-		target: "#svelte"
 	}
 };
 
