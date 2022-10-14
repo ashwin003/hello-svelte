@@ -10,12 +10,13 @@
 	import type { Country } from '$lib/settings/country';
 	import { station } from '$lib/stores/station';
 
-	const pageSize = 15;
+	const pageSize = 25;
 	let page = 1;
 	let data: Station[] = [];
 	let hasMore = true;
 	let selectedCountry: Country | undefined = undefined;
 	let selectedStationIndex = -1;
+	let infiniteId = Symbol();
 
 	$: selectedStation = data[selectedStationIndex];
 
@@ -67,6 +68,7 @@
 				document.title = c.name + ' | Radio Browser';
 				selectedStationIndex = -1;
 				page = 1;
+				infiniteId = Symbol();
 				fetchData(c.iso_3166_1, true);
 			}
 		});
@@ -101,7 +103,7 @@
 		</Item>
 	{/each}
 </List>
-<InfiniteLoading on:infinite={infiniteHandler} forceUseInfiniteWrapper>
+<InfiniteLoading on:infinite={infiniteHandler} forceUseInfiniteWrapper identifier={infiniteId}>
 	<slot name="noResults" />
 </InfiniteLoading>
 

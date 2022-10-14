@@ -3,7 +3,6 @@
 	import { onMount } from 'svelte';
 	import { station } from '$lib/stores/station';
 	import type { Station } from 'src/routes/station';
-	import IconButton from '@smui/icon-button/src/IconButton.svelte';
 	import LayoutGrid, { Cell } from '@smui/layout-grid';
 
 	let currentlyPlaying: Station | undefined = undefined;
@@ -42,8 +41,11 @@
 	>
 		<Content class="player-content">
 			<LayoutGrid>
-				<Cell span={7} style="grid-column-end: span 3;">
+				<Cell span={7} style="grid-column-end: span 12;">
 					<div class="mdc-typography--headline2">{currentlyPlaying.name}</div>
+				</Cell>
+				<Cell span={3} style="grid-column-start: 13;">
+					<div class="mdc-typography--headline2">{currentlyPlaying.country}</div>
 				</Cell>
 			</LayoutGrid>
 			<audio src={currentlyPlaying.url_resolved} autoplay />
